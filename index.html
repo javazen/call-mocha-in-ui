@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Mocca</title>
+    <link rel="icon" href="data:;base64,=">
+    <link rel="stylesheet" href="./node_modules/mocha/mocha.css" />
+    <script type=module src="./node_modules/mocha/mocha.js"></script>
+    <script type=module>mocha.setup('tdd')</script>
+    <script type=module src="src/index.js"></script>
+    <script type=module src="src/util.js"></script>
+    <script type=module src="test/test_util.js"></script>
+  </head>
+  <body>
+    <h2>Mocca - how to use mocha/chai with ES6 modules in the browser</h2>
+    <label for="x">x: <input id="x" type="text"/> </label> <br />
+    <label for="y">y: <input id="y" type="text"/> </label> <br />
+    <button id="calc" title="calc the function">Calc</button> <br /> <br />
+    <label for="result">result: <input id="result" type="text" readonly/> </label> <br />
+    <p> ----- </p>
+    <button id="runtests" title="run the unit tests">Run Unit Tests</button>
+    <div id="mocha"></div>
+  </body>
+</html>
