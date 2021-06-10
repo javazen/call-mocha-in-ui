@@ -1,7 +1,8 @@
-import {multExcept2x3} from './util.js';
-import '../node_modules/mocha/mocha.js';
-
 const TRACE = true;
+const TESTING = true;
+
+import {multExcept2x3} from './util.js';
+import {handleRuntests} from '../test/test_util.js';
 
 let result;
 
@@ -9,8 +10,14 @@ document.addEventListener("DOMContentLoaded", function() {
   if (TRACE) console.log('DOMContentLoaded');
   let calc = document.getElementById("calc");
   calc.addEventListener('click', handleCalc);
-  let runtests = document.getElementById("runtests");
-  runtests.addEventListener('click', handleRuntests);
+  
+  if (TESTING) {
+    let runtests = document.getElementById("runtests");
+    runtests.addEventListener('click', handleRuntests);
+  } else {
+    let testingSection = document.getElementById("testingSection");
+    testingSection.style.display = "none";
+  }
 });
 
 function handleCalc() {
@@ -22,11 +29,4 @@ function handleCalc() {
   let yValue = yInput.value;
   result = multExcept2x3(xValue, yValue);
   resultInput.value = result;
-}
-
-// we don't call mocha.setup('tdd') here - it has to be called much earlier
-// so that test files using suite() and test() will load without error
-function handleRuntests() {
-  if (TRACE) console.log('handleRuntests');
-  mocha.run();
 }

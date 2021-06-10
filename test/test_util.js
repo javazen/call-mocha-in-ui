@@ -6,6 +6,14 @@ const TRACE = true;
 if (TRACE) console.log('load of test/test_util.js');
 var expect = chai.expect;
 
+
+// we don't call mocha.setup('tdd') here - it has to be called much earlier
+// so that test files using suite() and test() will load without error
+export function handleRuntests() {
+  if (TRACE) console.log('handleRuntests');
+  mocha.run();
+}
+
 suite('Testing multExcept2x3', function() {
   var multExcept2x3Array = [
     {x:1, y: 1, result: 1},
